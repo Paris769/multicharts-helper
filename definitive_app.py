@@ -7,6 +7,21 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 
+
+def discover_patterns_h2o(dataframe):
+    """
+    Placeholder for H2O analysis. Implement pattern discovery with H2O here.
+    """
+    pass
+
+def query_gpt4(prompt: str):
+    """
+    Placeholder for GPT -4.1 analysis. Implement API call to OpenAI here.
+    """
+    pass
+
+
+
 @dataclass
 class StrategyPerformance:
     fast_period: int
