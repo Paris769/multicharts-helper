@@ -5,7 +5,12 @@ from pathlib import Path
 from typing import List, Tuple
 import pandas as pd
 import numpy as np
-import matplotlib.pyplot as plt
+# import matplotlib.pyplot as plt
+# Try to import matplotlib for plotting; fallback if unavailable
+try:
+    import matplotlib.pyplot as plt
+except ImportError:
+    plt = None
 
 
 def discover_patterns_h2o(dataframe):
