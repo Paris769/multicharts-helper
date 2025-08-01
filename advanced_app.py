@@ -63,7 +63,7 @@ def main() -> None:
         st.subheader("Ricerca edge EMA")
         # Extract the Close price column from the DataFrame. MultiCharts exports usually
       # include a column named 'Close' containing the closing prices used for backtesting.
-3
+
                 close_cols = [
             c for c in df.columns
             if c.replace("<", "").replace(">", "").strip().lower() == "close"
