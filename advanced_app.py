@@ -62,8 +62,12 @@ def main() -> None:
         # Perform moving average crossover edge search
         st.subheader("Ricerca edge EMA")
         # Extract the Close price column from the DataFrame. MultiCharts exports usually
-        # include a column named 'Close' containing the closing prices used for backtesting.
-        close_cols = [c for c in df.columns if c.strip().lower() == "close"]
+      # include a column named 'Close' containing the closing prices used for backtesting.
+3
+                close_cols = [
+            c for c in df.columns
+            if c.replace("<", "").replace(">", "").strip().lower() == "close"
+        ]    
         if not close_cols:
             # If no 'Close' column is found, inform the user and abort this analysis.
             st.error(
