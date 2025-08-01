@@ -61,7 +61,21 @@ def main() -> None:
 
         # Perform moving average crossover edge search
         st.subheader("Ricerca edge EMA")
-        results = find_best_edges(df, range(5, 16), range(20, 41), top=5)
+        # Extract the Close price column from the DataFrame. MultiCharts exports usually
+        # include a column named 'Close' containing the closing prices used for backtesting.
+        close_cols = [c for c in df.columns if c.strip().lower() == "close"]
+        if not close_cols:
+            # If no 'Close' column is found, inform the user and abort this analysis.
+            st.error(
+                "La colonna 'Close' non è presente nel file. "
+                "Impossibile calcolare le strategie."
+            )
+            return
+        # Select the first matching column as the price series
+        prices = df[close_cols[0]]
+        results = find_best_edges(prices, (range(5, 16)), (range(20, 41)))
+        # Keep only the top 5 results for display
+        results = results[:5]
 
         if results:
             # Display the top strategies and their performance
